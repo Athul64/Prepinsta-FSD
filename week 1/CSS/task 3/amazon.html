@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon-Product Listing</title>
+    <link rel="stylesheet" href="amazon.css">
+</head>
+<body>
+    <header>
+        <h1>Amazon Product Listing</h1>
+        <div class="filters">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="all">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="books">Books</option>
+            </select>
+            <label for="price-range">Price Range:</label>
+            <select id="price-range">
+                <option value="all">All Prices</option>
+                <option value="0-50">₹0 - ₹1000</option>
+                <option value="51-100">₹10000 - ₹20000</option>
+                <option value="101-200">₹50000 - ₹100000</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="products">
+        <div class="product-card">
+            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mba13-midnight-config-202402?wid=820&hei=498&fmt=jpeg&qlt=90&.v=1708371033110" alt="Electronics">
+            <h2>Customise your 13" MacBook Air - Midnigh</h2>
+            <p class="price">₹99900.00
+                Apple M2 chip with 8‑core CPU, 8‑core GPU, 16‑core Neural Engine
+                8GB unified memory
+                256GB SSD storage
+                34.46 cm (13.6″) Liquid Retina display with True Tone²
+                1080p FaceTime HD camera
+                MagSafe 3 charging port
+                Two Thunderbolt / USB 4 ports
+                30W USB-C Power Adapter
+                Backlit Magic Keyboard with Touch ID - US English
+            </p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=940&hei=1112&fmt=png-alpha&.v=1604022365000" alt="Electronics">
+            <h2>AirPods Max</h2>
+            <p class="price">₹59900.00</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSewFN43o8btaeJBGvRafv_sLhG9sqfEm-jhdVEVaFNR_V9ox7JvOhark9Fxi1cNwEgLMxqApTv-zbTVrr8z3snV0Ha23hsZ6qcSAIeeiiTKRN5abSe7IMj&usqp=CAE" alt="Electronics">
+            <h2>	
+                PlayStation 5 Slim Console - Digital Edition for PS5</h2>
+            <p class="price">₹59900.00</p>
+            <button>Add to Cart</button>
+        </div>
+    </main>
+</body>
+</html>

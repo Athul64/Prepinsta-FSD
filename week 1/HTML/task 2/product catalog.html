@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: rgb(151, 235, 235);
+            color: #191919;
+            padding: 15px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .categories {
+            margin-bottom: 20px;
+        }
+        .categories ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .categories ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        li a{
+            text-decoration: none;
+            color: #191919;
+        }
+        .products {
+            display: grid;
+            gap: 20px; /* spacing between products */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* responsive grid, min 250px, max 1fr */
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .product-info {
+            text-align: left;
+        }
+        .product-info h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .product-info h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .product-info p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .product-info span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Amazon store</h1>
+    </header>
+    <div class="container">
+        <section class="categories">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#">BATMAN</a></li>
+                <li><a href="#">ANIME</a></li>
+            </ul>
+        </section>
+        <section class="products">
+            <div class="product">
+                <img src="https://rukminim2.flixcart.com/image/850/1000/action-figure/5/e/n/batman-dark-knight-7-inch-action-figure-original-imae3g8rgbfnt455.jpeg?q=90&crop=false" 
+                alt="BATMAN Dark Knight 7 inch Action Figure (Black)">
+                <div class="product-info">
+                    <h2><a href="#">BATMAN Dark Knight 7 inch Action Figure (Black)</a></h2>
+                    <p>This is a 7 Inches (18cm) tall beautifully finished Action Figure of Batman from Batman: The Dark Knight.</p>
+                    <span>$199.99</span>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://www.bigw.com.au/medias/sys_master/images/images/hf6/hd3/45131154194462.jpg"
+                 alt="Batman 30cm Batman Adventures Action Figure">
+                <div class="product-info">
+                    <h2><a href="#">Batman 30cm Batman Adventures Action Figure</a></h2>
+                    <p>Introducing the Batman Adventures, 12-inch Batman Action Figure! This action-packed Batman figure is perfect for kids and collectors who want to dive into the exciting world of Batman toys!</p>
+                    <span>$149.99</span>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81JB-fs6uSL._AC_UF1000,1000_QL80_.jpg"
+                 alt="Funskool - Batman -Decoy Batman,Classic Action Figures with Articulation,6 Inches,Collectible,for 4 Year Old Kids and above,Toy">
+                <div class="product-info">
+                    <h2><a href="#">Funskool - Batman -Decoy Batman,Classic Action Figures with Articulation,6 Inches,Collectible,for 4 Year Old Kids and above,Toy</a></h2>
+                    <p>The Batman Adventures, 12-inch Batman Action Figure! This action-packed Batman figure is perfect for kids and collectors.</p>
+                    <span>$189.99</span>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81kOfkCGvFL.jpg"
+                 alt="Swimways DC Batman Swim Huggable, Batman Toys, Bath Toys & Beach Toys, Floating Water Stuffed Animal for Kids Aged 1 & Up">
+                <div class="product-info">
+                    <h2><a href="#">Swimways DC Batman Swim Huggable, Batman Toys, Bath Toys & Beach Toys, Floating Water Stuffed Animal for Kids Aged 1 & Up</a></h2>
+                    <p>12-inch Batman Action Figure! This action-packed Batman figure is perfect for kids and collectors who want to dive into the exciting world of Batman toys!</p>
+                    <span>$159.99</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif; /* Add a font-family for better readability */
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        header {
+            background-color: #ffffff;
+            color: #191919;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        h3 span {
+            color: #ff6600; /* Orange color */
+            font-size: 26px;
+        }
+        nav {
+            margin-left: auto; /* Align nav items to the right */
+        }
+        nav a {
+            margin: 0 50px; /* Adjust the space between nav links */
+            color: #191919;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+        .container {
+            padding: 20px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Align items vertically */
+            justify-content: center; /* Center items horizontally */
+            flex-direction: column; /* Stack sections vertically */
+        }
+        #about {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Align items vertically */
+            justify-content: space-between; /* Space items evenly */
+            width: 100%; /* Full width */
+            margin-top: 50px; /* Adjust margin at the top */
+        }
+        #about img {
+            width: 500px;
+            height: auto;
+            border-radius: 50%;
+        }
+        #about .text {
+            flex: 1.3; /* Grow to fill remaining space */
+            margin-left: 20px; /* Add space between image and text */
+            font-size: 18px; /* Increase font size */
+            text-align: justify; /* Justify text for better readability */
+        }
+        #about h2 {
+            text-align: left; /* Left align the heading */
+        }
+        #skills .skills ul, #skills .skills li {
+            text-align: left; /* Left align the skills section */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ATHUL KRISHNA</h1>
+        <nav>
+            <a href="#Home">Home</a>
+            <a href="#about">About</a>
+            <a href="#" class="show-skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section id="about">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/002/403/original/man-with-beard-avatar-character-isolated-icon-free-vector.jpg" alt="Profile Picture" class="profile-picture">
+                <div class="text">
+            <h3>Hello! I'm <br><span>ATHUL KRISHNA</span></h3>
+                <p> I am passionate about Information Technology and coding.
+                    Welcome to my personal website where you can learn more about my skills and interests. 
+                    As a student with a fervent interest in IT, I am driven by a deep passion for coding and
+                    an insatiable curiosity for new advancements. The world of programming captivates me, and 
+                    I find immense joy in crafting innovative software and applications. My journey in IT is 
+                    fueled by the excitement of discovering and mastering emerging technologies, and I am dedicated
+                    to developing solutions that can transform ideas into reality. I aspire to build a career where
+                    my creativity and technical skills converge to create impactful and efficient software that can
+                    revolutionize the way we interact with technology.
+                    </p>
+            <h2>My Skills</h2>
+            <ul>
+                <li>Python</li>
+                <li>Java</li>
+                <li>Html</li>
+                <li>Css</li>
+                <li>Java script</li>
+            </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
