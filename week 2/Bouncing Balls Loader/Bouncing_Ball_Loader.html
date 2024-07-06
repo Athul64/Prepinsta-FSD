@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .bouncing-balls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .bouncing-balls div {
+            width: 20px;
+            height: 20px;
+            margin: 3px;
+            background-color: #191919;
+            border-radius: 50%;
+            animation: bounce 0.6s infinite alternate;
+        }
+        .bouncing-balls div:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .bouncing-balls div:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+            to {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bouncing-balls">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

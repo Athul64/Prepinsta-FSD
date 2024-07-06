@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .pulsing-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .pulsing-dots div {
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background-color: #191919;
+            border-radius: 50%;
+            animation: pulse 0.6s infinite alternate;
+        }
+        .pulsing-dots div:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .pulsing-dots div:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes pulse {
+            to {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pulsing-dots">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
