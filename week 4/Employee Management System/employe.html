@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <h1>Employee List</h1>
+        <div id="output" class="output"></div>
+        
+        <div class="button-grid">
+            <button onclick="calculateAverageSalary()">Calculate Average Salary</button>
+            <button onclick="findEmployeesByDepartment('Marketing')">Find Marketing Employees</button>
+            <button onclick="findEmployeesByDepartment('HR')">Find HR Employees</button>
+            <button onclick="findEmployeesByDepartment('IT')">Find IT Employees</button>
+            <button onclick="increaseSalary(10)">Increase Salary by 10%</button>
+            <button onclick="sortEmployeesByAge()">Sort Employees by Age</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

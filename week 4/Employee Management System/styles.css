@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 50%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: width 0.3s ease;
+}
+
+h1, .output {
+    text-align: center;
+}
+
+.output {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.button-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-grid button {
+    width: 30%;
+    padding: 25px 20px;
+    background-color: #191919;
+    color: #fff;
+    border: 2px solid #191919;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-grid button:hover {
+    background-color: #fff;
+    color: #191919;
+}
+
+.button-grid button:nth-child(1),
+.button-grid button:nth-child(2),
+.button-grid button:nth-child(3) {
+    width: 30%;
+}
+
+.button-grid button:nth-child(4),
+.button-grid button:nth-child(5),
+.button-grid button:nth-child(6) {
+    width: 30%;
+}
