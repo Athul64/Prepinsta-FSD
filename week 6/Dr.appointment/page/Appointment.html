@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .desktop-nav {
+            width: 100%;
+            display: flex;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .logo-name {
+            font-size: 2rem;
+            color: #000;
+        }
+        .details-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 80px; /* Adjusted for fixed navbar */
+        }
+        h2 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 0; /* Removed margin-top */
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .back-btn {
+            margin-right: 100px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .modal .btn {
+            margin: 5px;
+        }
+        .modal .btn-cancel {
+            background-color: #dc3545;
+        }
+        .modal .btn-cancel:hover {
+            background-color: #c82333;
+        }
+        .modal-show {
+            display: block;
+            opacity: 1;
+        }
+        .modal-hide {
+            opacity: 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="desktop-nav">
+        <div class="logo-name">e<span>Doc.</span></div>
+        <button class="back-btn btn" onclick="navigateToBack()">Back</button>
+    </nav>
+    <div class="details-container">
+        <h2>Appointment Details</h2>
+        <table id="detailsTable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Doctor</th>
+                    <th>Department</th>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Reason</th>
+                    <th>Action</th> <!-- Added column header for Action -->
+                </tr>
+            </thead>
+            <tbody id="details">
+                <!-- Data will be populated here -->
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>30</td>
+                    <td>Male</td>
+                    <td>123 Elm Street</td>
+                    <td>Springfield</td>
+                    <td>IL</td>
+                    <td>Dr. Smith</td>
+                    <td>Cardiology</td>
+                    <td>2024-08-15</td>
+                    <td>10:00 AM</td>
+                    <td>Routine Checkup</td>
+                    <td><button class="btn" onclick="showCancelModal()">Cancel Appointment</button></td> <!-- Added Cancel button -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="cancelModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to cancel the appointment?</p>
+            <button class="btn" onclick="confirmCancel()">Yes</button>
+            <button class="btn btn-cancel" onclick="hideCancelModal()">No</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const detailsTableBody = document.getElementById('details');
+            const appointmentData = JSON.parse(localStorage.getItem('appointmentData'));
+
+            if (appointmentData) {
+                const detailsHtml = `
+                    <tr>
+                        <td>${appointmentData.firstName}</td>
+                        <td>${appointmentData.lastName}</td>
+                        <td>${appointmentData.age}</td>
+                        <td>${appointmentData.gender}</td>
+                        <td>${appointmentData.address}</td>
+                        <td>${appointmentData.city}</td>
+                        <td>${appointmentData.state}</td>
+                        <td>${appointmentData.doctor}</td>
+                        <td>${appointmentData.department}</td>
+                        <td>${appointmentData.date}</td>
+                        <td>${appointmentData.timeSlot}</td>
+                        <td>${appointmentData.reason}</td>
+                        <td><button class="btn" onclick="showCancelModal()">Cancel</button></td> <!-- Added Cancel button -->
+                    </tr>
+                `;
+                detailsTableBody.innerHTML = detailsHtml;
+            } else {
+                detailsTableBody.innerHTML = '<tr><td colspan="13">No appointment data found.</td></tr>'; 
+                }
+        });
+
+        function navigateToBack(){
+            window.location.href="home.html";
+        }
+
+        function showCancelModal() {
+            const modal = document.getElementById('cancelModal');
+            modal.classList.add('modal-show');
+            modal.classList.remove('modal-hide');
+        }
+
+        function hideCancelModal() {
+            const modal = document.getElementById('cancelModal');
+            modal.classList.add('modal-hide');
+            modal.classList.remove('modal-show');
+        }
+
+        function confirmCancel() {
+            localStorage.removeItem('appointmentData');
+            hideCancelModal();
+            alert('Appointment cancelled successfully.');
+            navigateToBack();
+        }
+    </script>
+</body>
+</html>

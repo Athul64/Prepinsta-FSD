@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Specialities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #f8f9fa;
+        }
+
+        .desktop-nav {
+            width: 100%;
+            display: flex;
+            background-color: #fff;
+            box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo-name {
+            font-size: 3rem;
+            color: #000;
+            margin-left: 100px;
+        }
+
+        .sidebar {
+            width: 120px;
+            background-color: #fff;
+            height: 85vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 67px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 50px 0;
+        }
+
+        .sidebar ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar a:hover {
+            color: #162745;
+            text-decoration: underline;
+            text-underline-offset: 1rem;
+            text-decoration-color: #203252;
+        }
+
+        .main-content {
+            margin-left: 150px;
+            padding: 80px;
+            width: calc(100% - 150px);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #a9cbe8;
+            text-align: center;
+        }
+
+        .stat {
+            margin: 0 20px;
+        }
+
+        .stat .number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #191919;
+        }
+
+        .stat .label {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .content {
+            text-align: center;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card img {
+            width: 40px; /* Adjust size as needed */
+            height: auto;
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100px;
+            padding: 10px;
+            background-color: #345cc4;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-right: 50px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #fff;
+            color: #345cc4;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="message"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            padding: 10px 20px;
+            background-color: #345cc4;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #203252;
+        }
+    </style>
+</head>
+<body>
+    <nav class="desktop-nav">
+        <div class="logo-name">e<span>Doc.</span></div>
+        <button class="back-btn" onclick="navigateToBackh()">Back</button>
+    </nav>
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" onclick="navigateToAppointment()">Appointments</a></li>
+            <li><a href="#" onclick="openModal()">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="stats">
+            <div class="stat">
+                <span class="number">370</span>
+                <span class="label">Cities</span>
+            </div>
+            <div class="stat">
+                <span class="number">4.5</span>
+                <span class="label">Crore Patients Served</span>
+            </div>
+            <div class="stat">
+                <span class="number">16</span>
+                <span class="label">Medical Specialities</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <h2>Experience the IMC for your speciality</h2>
+                <p>Click on the card to select your speciality</p>
+                <div class="grid">
+                    <div class="card" style="background-color: #F1C50E;">
+                        <h3>Cardiologist</h3>
+                        <div class="card-content" onclick="navigateToCardo()">
+                            <img src="../img/file.png" alt="icons">
+                            <p>58 Lakh+ <br>Rx Written</p>
+                            <img src="../img/heart.png" alt="Cardiologist">
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="background-color: #2C97DF;">
+                        <h3>Gastroenterologist</h3>
+                        <div class="card-content" onclick="navigateToGas()">
+                            <img src="../img/file.png" alt="icons">
+                            <p>09 Lakh+ <br>Rx Written</p>
+                            <img src="../img/stomach.png" alt="Gastroenterologist">
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: #2A80B9;">
+                        <h3>Nephrologist</h3>
+                        <div class="card-content">
+                            <img src="../img/file.png" alt="icons">
+                            <p>13 Lakh+ <br>Rx Written</p>
+                            <img src="../img/kidney.png" alt="Nephrologist">
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: #F1C50E;">
+                        <h3>Endocrinologist</h3>
+                        <div class="card-content">
+                            <img src="../img/file.png" alt="icons">
+                            <p>40 Lakh+ <br>Rx Written</p>
+                            <img src="../img/endocrinology.png" alt="Endocrinologist">
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: #9C56B8;">
+                        <h3>Diabetologist</h3>
+                        <div class="card-content">
+                            <img src="../img/file.png" alt="icons">
+                            <p>63 Lakh+ <br>Rx Written</p>
+                            <img src="../img/diabetes.png" alt="Diabetologist">
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: #685BBB;">
+                        <h3>Pulmonologist</h3>
+                        <div class="card-content">
+                            <img src="../img/file.png" alt="icons">
+                            <p>06 Lakh+ <br>Rx Written</p>
+                            <img src="../img/pulmonology.png" alt="Pulmonologist">
+                        </div>
+                    </div>
+                    <div class="card" style="background-color: #00BE9C;">
+                        <h3>Consulting Physician</h3>
+                        <div class="card-content">
+                            <img src="../img/file.png" alt="icons">
+                            <p>1.07 Crore+ <br>Rx Written</p>
+                            <img src="../img/consulting.png" alt="Consulting Physician">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <form id="contactForm" onsubmit="return handleSubmit(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="message">Message:</label><br>
+                <input type="message" id="message" name="message" required><br><br>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function navigateToBackh() {
+            window.location.href = "../index.html";
+        }
+
+        function navigateToCardo(){
+            window.location.href="cardo.html";
+        }
+        
+        function navigateToGas(){
+            window.location.href="Gastroenterologist.html";
+        }
+
+        function navigateToAppointment(){
+            window.location.href="appointment.html"
+        }
+
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Successfully sent");
+            closeModal();
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

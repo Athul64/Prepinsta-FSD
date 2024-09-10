@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulmonologist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .desktop-nav {
+            width: 100%;
+            display: flex;
+            background-color: #fff;
+            box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px ;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo-name {
+            font-size: 3rem;
+            color: #000;
+            margin-left: 100px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 120px;
+            max-height: 110vh;
+        }
+
+        .calendar-section,
+        .time-slot-section {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .calendar-body table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar-body th,
+        .calendar-body td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .calendar-body td:hover {
+            background-color: #e0e0e0;
+        }
+
+        .inactive {
+            color: #ccc;
+        }
+
+        .active {
+            background-color: #fff;
+            color: black;
+        }
+
+        .selected {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .time-slot-section h3 {
+            margin-top: 0;
+        }
+
+        .time-slot {
+            margin-bottom: 20px;
+        }
+
+        .time-slot-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .time-slot button {
+            flex: 1 1 calc(50% - 10px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            color: #000;
+        }
+
+        .time-slot button:hover,
+        .time-slot button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .time-slot span {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .navigation {
+            margin-top: 350px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .navigation .back-btn:hover,
+        .navigation button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-btn {
+            margin-right: 30px;
+        }
+
+        #formContainer {
+            display: none;
+        }
+
+        .form-control[readonly] {
+            background-color: #e9ecef;
+        }
+
+        .modal-dialog {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .modal-body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="desktop-nav">
+        <div class="logo-name">e<span>Doc.</span></div>
+        <button class="back-btn" onclick="navigateToBack()">Back</button>
+    </nav>
+    <div class="container" id="calendarContainer">
+        <div class="calendar-section">
+            <div class="calendar-header">
+                <button id="prevMonth">&lt;</button>
+                <span id="monthYear">January 2024</span>
+                <button id="nextMonth">&gt;</button>
+            </div>
+            <div class="calendar-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendarDays">
+                        <!-- Calendar dates will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="time-slot-section">
+            <h3>Available Time Slots</h3>
+            <div class="time-slot">
+                <h4>Morning</h4>
+                <div class="time-slot-grid">
+                    <button class="time-button">9:00 - 9:30 am</button>
+                    <button class="time-button">9:30 - 10:00 am</button>
+                    <button class="time-button">10:00 - 10:30 am</button>
+                    <button class="time-button">10:30 - 11:00 am</button>
+                </div>
+            </div>
+            <div class="time-slot">
+                <h4>Afternoon</h4>
+                <div class="time-slot-grid">
+                    <button class="time-button">1:00 - 1:30 pm</button>
+                    <button class="time-button">1:30 - 2:00 pm</button>
+                    <button class="time-button">2:00 - 2:30 pm</button>
+                    <button class="time-button">2:30 - 3:00 pm</button>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <button id="nextStep">Next</button>
+        </div>
+    </div>
+    <div class="container" id="formContainer">
+        <form id="appointmentForm" class="row g-3">
+            <div class="col-md-6">
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+            <div class="col-md-6">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            <div class="col-md-6">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-select" id="gender" name="gender" required>
+                    <option selected disabled value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="col-md-6">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <div class="col-md-6">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" name="state" required>
+            </div>
+            <div class="col-md-6">
+                <label for="doctor" class="form-label">Doctor</label>
+                <select class="form-select" id="doctor" name="doctor" required>
+                    <option value="Dr. Smith">Dr. Smith</option>
+                    <option value="Dr. Johnson">Dr. Johnson</option>
+                    <option value="Dr. Williams">Dr. Williams</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="department" class="form-label">Department</label>
+                <input type="text" class="form-control" id="department" name="department" value="Pulmonology" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="date" class="form-label">Date</label>
+                <input type="text" class="form-control" id="date" name="date" readonly>
+            </div>
+            <div class="col-md-6">
+                <label for="timeSlot" class="form-label">Time Slot</label>
+                <input type="text" class="form-control" id="timeSlot" name="timeSlot" readonly>
+            </div>
+            <div class="col-12">
+                <label for="reason" class="form-label">Reason for Visit</label>
+                <textarea class="form-control" id="reason" name="reason" required></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal" id="successModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Appointment booked successfully!</p>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="navigateToClose()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const calendarContainer = document.getElementById('calendarContainer');
+        const formContainer = document.getElementById('formContainer');
+        const appointmentForm = document.getElementById('appointmentForm');
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'), {});
+
+        const selectedDateElement = document.getElementById('date');
+        const selectedTimeSlotElement = document.getElementById('timeSlot');
+        let selectedDate = null;
+        let selectedTimeSlot = null;
+
+        const daysInMonth = (month, year) => new Date(year, month, 0).getDate();
+
+        const renderCalendar = (month, year) => {
+            const calendarDays = document.getElementById('calendarDays');
+            calendarDays.innerHTML = '';
+            const firstDay = new Date(year, month).getDay();
+            const days = daysInMonth(month + 1, year);
+
+            let date = 1;
+            for (let i = 0; i < 6; i++) {
+                const row = document.createElement('tr');
+
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement('td');
+                    if (i === 0 && j < firstDay) {
+                        cell.classList.add('inactive');
+                        row.appendChild(cell);
+                    } else if (date > days) {
+                        cell.classList.add('inactive');
+                        row.appendChild(cell);
+                    } else {
+                        cell.textContent = date;
+                        cell.addEventListener('click', () => {
+                            if (selectedDate) {
+                                selectedDate.classList.remove('selected');
+                            }
+                            cell.classList.add('selected');
+                            selectedDate = cell;
+                            selectedDateElement.value = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
+                        });
+                        row.appendChild(cell);
+                        date++;
+                    }
+                }
+
+                calendarDays.appendChild(row);
+            }
+        };
+
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentMonth = (currentMonth + 1) % 12;
+            currentYear = currentMonth === 0 ? currentYear + 1 : currentYear;
+            renderCalendar(currentMonth, currentYear);
+            document.getElementById('monthYear').textContent = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
+        });
+
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentMonth = (currentMonth - 1 + 12) % 12;
+            currentYear = currentMonth === 11 ? currentYear - 1 : currentYear;
+            renderCalendar(currentMonth, currentYear);
+            document.getElementById('monthYear').textContent = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
+        });
+
+        const timeButtons = document.querySelectorAll('.time-button');
+        timeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (selectedTimeSlot) {
+                    selectedTimeSlot.classList.remove('active');
+                }
+                button.classList.add('active');
+                selectedTimeSlot = button;
+                selectedTimeSlotElement.value = button.textContent;
+            });
+        });
+
+        document.getElementById('nextStep').addEventListener('click', () => {
+            if (!selectedDate || !selectedTimeSlot) {
+                alert('Please select a date and time slot');
+                return;
+            }
+            calendarContainer.style.display = 'none';
+            formContainer.style.display = 'flex';
+        });
+
+        appointmentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                doctor: document.getElementById('doctor').value,
+                department: document.getElementById('department').value,
+                date: document.getElementById('date').value,
+                timeSlot: document.getElementById('timeSlot').value,
+                reason: document.getElementById('reason').value
+            };
+            localStorage.setItem('appointmentData', JSON.stringify(formData));
+            successModal.show();
+        });
+
+        function navigateToBack() {
+            window.location.href = "home.html";
+        }
+
+        function navigateToClose() {
+            window.location.href = "home.html"; // Redirect to the new page to show details
+        }
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        document.getElementById('monthYear').textContent = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
+        renderCalendar(currentMonth, currentYear);
+    </script>
+</body>
+</html>
