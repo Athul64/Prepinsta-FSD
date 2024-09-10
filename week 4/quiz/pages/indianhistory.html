@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian History</title>
+    <style>
+         body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        color: #191919;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .logoname {
+        font-size: 1.5rem;
+        font-weight: bold;
+        gap: 0.5rem;
+    }
+
+    .logoname span {
+        color: #FF6A70;
+    }
+
+    nav div {
+        display: flex;
+        align-items: center;
+    }
+
+    button {
+        margin-right: 4rem;
+        padding: 0.5rem 2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .logout_btn {
+        background-color: #FFE1D7; 
+        color: #FF6A70;
+    }
+
+    button:hover {
+        background-color: #fff;
+        color: #FF6A70;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 88%;
+        margin-top: 67px;
+        background-color: #fff;
+        border-right: 1px solid #ddd;
+        padding: 1rem;
+        box-shadow: 4px 0px 4px rgba(0, 0, 0, 0);
+        z-index: 1000;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sidebar li {
+        padding: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        transition: background-color 0.3s;
+        background-color: #FFE1D7;
+    }
+
+    .sidebar li.complete {
+        background-color: #FF6A70;
+        color: #fff;
+    }
+
+    .popup-container {
+        background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+        border-radius: 12px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+        position: absolute;
+        top: 35%;
+        left: 55%;
+        transform: translate(-50%, 0);
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .checkbox-container input {
+        margin-right: 10px;
+    }
+
+    .start-btn, .submit-btn {
+        padding: 12px 24px;
+        margin-left: 70px;
+        border: none;
+        border-radius: 6px;
+        background-color: #FF6A70;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .start-btn:hover, .submit-btn:hover {
+        background-color: #FFE1D7;
+        transform: scale(1.05);
+    }
+
+    .start-btn:disabled, .submit-btn:disabled {
+        background-color: #FFE1D7;
+        color: #FF6A70;
+        cursor: not-allowed;
+    }
+
+    .question {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .choices {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .choice-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        font-size: 1.1rem;
+        text-align: left;
+        filter: none;
+        color: #191919;
+        transition: border 0.3s;
+    }
+
+    .choice-btn:hover {
+        background-color: #fff; 
+        color: #191919; 
+    }
+
+    .choice-btn.correct {
+        border: 2px solid green;
+    }
+
+    .choice-btn.incorrect {
+        border: 2px solid red;
+    }
+
+    .quiz-container {
+        display: none; /* Initially hide quiz container */
+        background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+        border-radius: 12px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+        position: absolute;
+        top: 25%;
+        left: 55%;
+        transform: translate(-50%, 0);
+    }
+
+    .quiz-container .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    #timer {
+        font-size: 1rem;
+        color: #FF6A70;
+    }
+
+        .choice-btn.correct {
+            border: 2px solid green;
+        }
+
+        .choice-btn.incorrect {
+            border: 2px solid red;
+        }
+
+        .celebration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 3000;
+            display: none;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FF6A70;
+            opacity: 0.7;
+            animation: confetti-fall 3s ease-out infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .re_btn{
+            margin-left: 50px;
+            color: #FF6A70;
+        }
+        
+        .pop-text{
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logoname">Quiz<span>Master..</span></div>
+        <div>
+            <button class="logout_btn" onclick="navigateToBack()">Back</button>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul id="question-list">
+            <li class="incomplete">Question 1</li>
+            <li class="incomplete">Question 2</li>
+            <li class="incomplete">Question 3</li>
+            <li class="incomplete">Question 4</li>
+            <li class="incomplete">Question 5</li>
+        </ul>
+    </div>
+    
+    <div class="popup-container" id="popup-container">
+        <div class="popup-content">
+            <h2>Welcome to the Indian History Quiz</h2>
+            <p class="pop-text">Test your knowledge about Indian History with this quick quiz. There are 5 questions, and you have 15 seconds to answer each one. Good luck!</p>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="consent-checkbox">
+            <label for="consent-checkbox">I understand the rules and I'm ready to start</label>
+        </div>
+        <button class="start-btn" id="start-btn" disabled>Start Quiz</button>
+    </div>
+
+    <div class="quiz-container" id="quiz-container">
+        <div class="header" id="quiz-header">
+            <span id="timer">🕛: 15s</span>
+            <span id="question-progress">Question 1 out of 5</span>
+        </div><hr>
+        <div class="question" id="question-text">Question will go here</div>
+        <div class="choices" id="choices-container"></div>
+    </div>
+
+    <div class="celebration" id="celebration">
+        <div class="confetti" id="confetti"></div>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById('start-btn');
+        const consentCheckbox = document.getElementById('consent-checkbox');
+        const popupContainer = document.getElementById('popup-container');
+        const quizContainer = document.getElementById('quiz-container');
+        const timerElement = document.getElementById('timer');
+        const questionProgress = document.getElementById('question-progress');
+        const questionListItems = document.getElementById('question-list').children;
+        const questionText = document.getElementById('question-text');
+        const choicesContainer = document.getElementById('choices-container');
+        const submitBtn = document.getElementById('submit-btn');
+        const celebrationElement = document.getElementById('celebration');
+        const confettiElement = document.getElementById('confetti');
+
+        let currentQuestion = 0;
+        let timer;
+        let selectedAnswer = false;
+        let correctAnswers = 0;
+
+        const questions = [
+    {
+        text: "Who was the first President of India?",
+        choices: ["Jawaharlal Nehru", "Rajendra Prasad", "Sardar Patel", "Gandhi"],
+        correct: 1
+    },
+    {
+        text: "Which event is considered the beginning of the Indian independence movement?",
+        choices: ["Jallianwala Bagh Massacre", "Quit India Movement", "First War of Independence", "Partition of Bengal"],
+        correct: 2
+    },
+    {
+        text: "Who is known as the 'Iron Man of India'?",
+        choices: ["Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel", "Bhagat Singh"],
+        correct: 2
+    },
+    {
+        text: "In which year did India gain independence from British rule?",
+        choices: ["1942", "1947", "1950", "1952"],
+        correct: 1
+    },
+    {
+        text: "What was the name of the movement led by Mahatma Gandhi to protest British rule?",
+        choices: ["Salt March", "Civil Disobedience Movement", "Non-Cooperation Movement", "Swadeshi Movement"],
+        correct: 0
+    }
+];
+
+
+
+        function updateTimer(seconds) {
+            timerElement.innerText = `🕛${seconds}s`;
+        }
+
+        function startQuiz() {
+            popupContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+            loadQuestion(currentQuestion);
+            startTimer(15);
+        }
+
+        function loadQuestion(index) {
+            questionText.innerText = questions[index].text;
+            choicesContainer.innerHTML = '';
+            questions[index].choices.forEach((choice, i) => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.innerText = choice;
+                choiceBtn.classList.add('choice-btn');
+                choiceBtn.addEventListener('click', () => selectChoice(i));
+                choicesContainer.appendChild(choiceBtn);
+            });
+            updateQuestionProgress();
+        }
+
+        function updateQuestionProgress() {
+            questionProgress.innerText = `Question ${currentQuestion + 1} out of 5`;
+            Array.from(questionListItems).forEach((li, i) => {
+                li.classList.remove('complete', 'active');
+                if (i < currentQuestion) {
+                    li.classList.add('complete');
+                } else if (i === currentQuestion) {
+                    li.classList.add('active');
+                }
+            });
+        }
+
+        function startTimer(seconds) {
+            let timeLeft = seconds;
+            updateTimer(timeLeft);
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimer(timeLeft);
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    showCorrectAnswer();
+                    setTimeout(nextQuestion, 2000); // Show correct answer for 2 seconds
+                }
+            }, 1000);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+                selectedAnswer = false;
+                startTimer(15);
+            } else {
+                showResults();
+            }
+        }
+
+        function selectChoice(index) {
+            if (selectedAnswer) return; // Prevent multiple selections
+            clearInterval(timer); // Stop the timer
+            selectedAnswer = true;
+
+            const choiceBtns = choicesContainer.querySelectorAll('.choice-btn');
+            const correctIndex = questions[currentQuestion].correct;
+
+            if (index === correctIndex) {
+                correctAnswers++;
+            }
+
+            choiceBtns.forEach((btn, i) => {
+                if (i === correctIndex) {
+                    btn.classList.add('correct');
+                }
+                if (i === index && i !== correctIndex) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            setTimeout(nextQuestion, 2000); // Wait 2 seconds before moving to the next question
+        }
+
+        function showCorrectAnswer() {
+            const choiceBtns = choicesContainer.querySelectorAll('.choice-btn');
+            const correctIndex = questions[currentQuestion].correct;
+
+            choiceBtns.forEach((btn, i) => {
+                if (i === correctIndex) {
+                    btn.classList.add('correct');
+                }
+            });
+
+            setTimeout(nextQuestion, 2000); // Show correct answer for 2 seconds before moving to the next question
+        }
+
+        function showResults() {
+            quizContainer.style.display = "none";
+            popupContainer.innerHTML = `
+                <h2>Quiz Complete</h2>
+                <p>🏆 You answered ${correctAnswers} out of ${questions.length} questions correctly.</p>
+                <button class="re_btn" onclick="location.reload()">Restart Quiz</button>
+            `;
+            popupContainer.style.display = "block";
+
+            if (correctAnswers > 1) {
+                triggerCelebration();
+            }
+        }
+
+        function triggerCelebration() {
+            celebrationElement.style.display = "flex";
+            confettiElement.style.display = "block";
+            generateConfetti();
+            setTimeout(() => {
+                celebrationElement.style.display = "none";
+                confettiElement.style.display = "none";
+            }, 5000); // Celebration lasts for 5 seconds
+        }
+
+        function generateConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.classList.add('confetti-piece');
+                confettiPiece.style.left = `${Math.random() * 100}vw`;
+                confettiPiece.style.top = `${Math.random() * 100}vh`;
+                confettiPiece.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                confettiPiece.style.width = `${Math.random() * 10 + 5}px`;
+                confettiPiece.style.height = `${Math.random() * 10 + 5}px`;
+                confettiElement.appendChild(confettiPiece);
+            }
+        }
+
+        consentCheckbox.addEventListener('change', (e) => {
+            startBtn.disabled = !e.target.checked;
+        });
+
+        startBtn.addEventListener('click', startQuiz);
+        submitBtn.addEventListener('click', nextQuestion);
+
+        // Function to navigate back
+        function navigateToBack() {
+    window.location.href= 'start.html'
+}
+    </script>
+</body>
+</html>

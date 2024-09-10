@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem;
+    color: #191919;
+}
+
+.logoname {
+    font-size: 1.5rem;
+    font-weight: bold;
+    gap: 0.5rem;
+}
+
+span {
+    color: #FF6A70;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    margin-left: 1rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.login_btn {
+    background-color: #FFE1D7; 
+    color: #FF6A70;
+}
+
+.sign_btn {
+    background-color: #FF6A70; 
+    color: white;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #FF6A70;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    width: 80%;
+    max-width: 400px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #FF6A70;
+    margin-bottom: 20px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #191919;
+    padding: 0 5px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-group input {
+    width: 350px;
+    height: 40px;
+    font-size: 16px;
+    color: #191919;
+    padding: 0 10px;
+    background: transparent;
+    border: 1.2px solid #191919;
+    outline: none;
+    border-radius: 5px;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: 0;
+    font-size: 12px;
+    background-color: #f9f9f9;
+    color: #FF6A70;
+}
+
+button.signn_btn {
+    background-color: #ff6a70;
+    color: #FFE1D7;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    width: 350px;
+    margin-left: 0px;
+}
+
+button.signn_btn:hover {
+    background-color: #FFE1D7;
+    color: #FF6A70;
+}
+
+.login-link {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #FF6A70;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logoname" onclick="navigateToIndex()">Quiz<span>Master..</span></div>
+        <div>
+            <button class="login_btn" onclick="navigateToLogin()">Log in</button>
+        </div>
+    </nav>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form class="signup-form" onsubmit="return handleSignup(event)">
+            <div class="input-group">
+                <input type="text" id="username" name="username" required>
+                <label for="username">Username</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <label for="confirm-password">Confirm Password</label>
+            </div>
+
+            <button class="signn_btn" type="submit">Sign Up</button>
+        </form>
+        <p class="login-link">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+    <script>
+        function navigateToLogin() {
+            window.location.href = 'login.html';
+        }
+
+        function navigateToIndex() {
+            window.location.href = '../index.html';
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+
+            const user = { username, email, password };
+            localStorage.setItem(username, JSON.stringify(user));
+
+            alert("Sign up successful! Please log in.");
+            navigateToLogin();
+        }
+    </script>
+</body>
+</html>

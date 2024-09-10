@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+ * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #fff;
+        color: #191919;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 5rem;
+    }
+
+    .logoname {
+        font-size: 1.5rem;
+        font-weight: bold;
+        gap: 0.5rem;
+    }
+
+    .logoname span {
+        color: #FF6A70;
+    }
+
+    nav div {
+        display: flex;
+        align-items: center;
+    }
+
+    button {
+        margin-left: 1rem;
+        padding: 0.5rem 2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .login-btn {
+        background-color: #FFE1D7; 
+        color: #FF6A70;
+    }
+
+    .signup-btn {
+        background-color: #FF6A70; 
+        color: white;
+    }
+
+    button:hover {
+        background-color: #fff;
+        color: #FF6A70;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        width: 80%;
+        max-width: 400px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #FF6A70;
+        margin-bottom: 20px;
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .input-group {
+        position: relative;
+        margin: 20px 0;
+    }
+
+    .input-group label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        padding: 0 5px;
+        font-size: 16px;
+        color: #191919;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        background-color: #f9f9f9;
+        transform: translateY(-50%);
+    }
+
+    .input-group input {
+        width: 100%;
+        height: 40px;
+        font-size: 16px;
+        color: #191919;
+        padding: 10px;
+        border: 1.2px solid #191919;
+        border-radius: 5px;
+        outline: none;
+        background: transparent;
+    }
+
+    .input-group input:focus ~ label,
+    .input-group input:not(:placeholder-shown) ~ label {
+        top: -1px;
+        font-size: 12px;
+        color: #FF6A70;
+        padding: 0 5px;
+    }
+
+    .login-form button {
+        background-color: #FF6A70;
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
+    .login-form button:hover {
+        background-color: #FFE1D7;
+        color: #FF6A70;
+    }
+
+    .signup-link {
+        margin-top: 15px;
+        font-size: 0.9rem;
+    }
+
+    .signup-link a {
+        color: #FF6A70;
+        text-decoration: none;
+    }
+
+    .signup-link a:hover {
+        text-decoration: underline;
+    }    </style>
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logoname" onclick="navigateToIndex()">Quiz<span>Master</span></div>
+        <div>
+            <button class="signup-btn" onclick="navigateToSignup()">Sign up</button>
+        </div>
+    </nav>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form class="login-form" onsubmit="return handleLogin(event)">
+            <div class="input-group">
+                <input type="text" id="username" name="username" required placeholder=" " />
+                <label for="username">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" required placeholder=" " />
+                <label for="password">Password</label>
+            </div>
+            <button type="submit">Log in</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+    <script>
+        function navigateToIndex() {
+            window.location.href = '../index.html';
+        }
+
+        function navigateToSignup() {
+            window.location.href = 'signup.html';
+        }
+
+        function navigateToSap(){
+            window.location.href='start.html';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const user = localStorage.getItem(username);
+            if (!user) {
+                alert("User not found. Please sign up.");
+                return false;
+            }
+
+            const userData = JSON.parse(user);
+            if (userData.password === password) {
+                alert("Login successful!");
+                navigateToSap(); // Redirect to start.html after successful login
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
