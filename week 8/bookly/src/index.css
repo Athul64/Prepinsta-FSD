@@ -1,0 +1,402 @@
+
+/* Remove default margin and padding from the body */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Remove white background */
+}
+
+
+/* Carousel Item Styling */
+.carousel-item {
+    margin-top: 0px;
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust the height as needed */
+    overflow: hidden;
+}
+
+/* Carousel Image Styling */
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure images cover the area without distortion */
+}
+
+/* Carousel Overlay Styling */
+.carousel-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+}
+
+/* Show overlay on hover */
+.carousel-item:hover .carousel-overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+/* Book List Grid Container */
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Ensure 4 items per row */
+    gap: 20px; /* Space between grid items */
+    margin-top: 10px; /* Space from top */
+    padding: 20px;
+    max-height: calc(100vh - 60px); /* Adjust based on other elements' heights */
+}
+
+/* Book Item Styling */
+.book-item {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 500px; /* Adjust width */
+    max-height: 900px; /* Adjust height */
+    overflow: hidden; /* Ensure no overflow */
+    position: relative; /* Relative positioning for overlay */
+}
+
+.book-item img {
+    width: 100%;
+    height: 500px; /* Set a fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Initially hide the title */
+.book-item h3{
+    font-size: 0.9rem; /* Smaller font size */
+    margin-top: 10px;
+    color: #333; /* Text color */
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis; /* Add ellipsis if the text is too long */
+    white-space: nowrap; /* Prevent text wrap */
+    opacity: 0; /* Hide initially */
+    transition: opacity 0.3s ease; /* Smooth fade-in */
+    position: absolute; /* Position the title over the image */
+    bottom: 9px; /* Position from bottom */
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(251, 245, 245, 0.8); /* Semi-transparent background */
+    padding: 5px; /* Padding around text */
+    border-radius: 5px;
+}
+
+/* Show title on hover */
+.book-item:hover h3 {
+    opacity: 1; /* Show title on hover */
+}
+
+/* Hover Effect */
+.book-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+}
+
+/* Container for Book Details */
+.bookdetail_container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  padding: 20px;
+  overflow-y: auto; /* Enables vertical scrolling if content overflows */
+  box-sizing: border-box; /* Includes padding in the height calculation */
+}
+
+/* Styling for Book Details */
+.book-details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 595px;
+  max-width: 1500px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row; /* Image on the left, content on the right */
+  gap: 20px; /* Space between image and text */
+}
+
+/* Book Image Styling */
+.book-details img {
+  width: 300px; /* Set the image width */
+  height: auto; /* Maintain the aspect ratio */
+  margin-top: 50px;
+  border-radius: 5px;
+}
+
+/* Book Content */
+.book-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px; /* Limit width for text readability */
+}
+
+/* Book Title Styling */
+.book-content h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Book Genre Styling */
+.book-content h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 15px; /* Space between genre and description */
+  text-align: center; /* Center the genre text */
+}
+
+/* Book Description Styling */
+.book-content p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Ensure scrollable content */
+.bookdetail_container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.bookdetail_container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); 
+  border-radius: 10px;
+}
+
+
+
+/* Book Genre Styling */
+.wrapperr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 100%;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column; /* Makes the content inside the form stack vertically */
+    align-content: center;
+    justify-content: center;
+    padding: 0px 25px;
+    border-radius: 10px;
+    width: 50%;
+    height: 500px;
+    background-color: #fff;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .form-container h3 {
+    text-align: center;
+  }
+
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    border: 1px solid #ccc; /* Adds a light border */
+    border-radius: 10px;
+    width: 98%;
+    padding: 9px;
+  }
+  
+  .form-group input,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #ccc; /* Change border color when focused */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adds a slight shadow on focus */
+}
+
+.description{
+  height: 50px;
+}
+  
+  button {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+  }
+
+/* Modal Styling */
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  
+  /* Center the modal */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers modal both vertically and horizontally */
+  
+  /* Layering */
+  z-index: 1000; /* Ensures the modal is on top of everything */
+  width: 20%; /* Set width based on your preference */
+  max-width: 600px; /* Ensures it doesn't get too wide */
+}
+
+/* Modal Header */
+.modal h4 {
+  margin-bottom: 20px;
+}
+
+/* Modal Button Styling */
+.modal button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Overlay to dim the background when the modal is open */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Dim background */
+  z-index: 999; /* Sits right below the modal */
+}
+
+  
+ .submit_btn {
+    margin-left: 250px;
+    margin-top: -20px;
+    scale: 0.5;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #fff;
+    color: #18181a;
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 20px;
+    width: 300px;
+    height: 80px;
+    text-decoration: none;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 30px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+ .submit_btn span:first-child {
+    position: relative;
+    transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 10;
+  }
+  
+ .submit_btn span:last-child {
+    color: white;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 100;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateY(225%) translateX(-50%);
+    height: 14px;
+    line-height: 13px;
+  }
+  
+ .submit_btn:after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #191919;
+    transform-origin: bottom center;
+    transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    transform: skewY(9.3deg) scaleY(0);
+    z-index: 50;
+  }
+  
+ .submit_btn:hover:after {
+    transform-origin: bottom center;
+    transform: skewY(9.3deg) scaleY(2);
+  }
+  
+ .submit_btn:hover span:last-child {
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 1;
+    transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+  }
+
+  .fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .fab:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .book-list {
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row for medium screens */
+    }
+
+    .book-item {
+        max-width: 150px; /* Adjust width for medium screens */
+        max-height: 250px; /* Adjust height for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .book-list {
+        grid-template-columns: 1fr; /* 1 item per row for very small screens */
+    }
+
+    .book-item {
+        max-width: 120px; /* Adjust width for small screens */
+        max-height: 200px; /* Adjust height for small screens */
+    }
+}

@@ -1,0 +1,44 @@
+[
+    {   
+        "id": "1",
+        "title": "It End With US",
+        "coverUrl": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1688011813i/27362503.jpg",
+        "genre": "Romance novel, Fiction, Contemporary romance",
+        "description": "It Ends with Us is a romance novel by Colleen Hoover, published by Atria Books on August 2, 2016. Based on the relationship between her mother and father, Hoover described it as the hardest book I've ever written . It explores themes of domestic violence and emotional abuse."
+    },
+    {   
+        "id": "2",
+        "title": "The Twilight Saga",
+        "coverUrl": "https://i.pinimg.com/736x/36/15/8f/36158f2b045bceeb9d989df099deb678.jpg",
+        "genre": "Fantasy romance, young adult fiction",
+        "description": "Twilight is a series of four fantasy romance novels, two companion novels, and one novella written by American author Stephenie Meyer. Released annually from 2005 through 2008, the four novels chart the later teen years of Bella Swan, a girl who moves to Forks, Washington, from Phoenix, Arizona and falls in love with a 104-year-old vampire named Edward Cullen. The series is told primarily from Bella's point of view, with the epilogue of Eclipse and the second part of Breaking Dawn being told from the viewpoint of character Jacob Black, a werewolf. A novella, The Short Second Life of Bree Tanner, which tells the story of a newborn vampire who appeared in Eclipse, was published on 2010.[1] The Twilight Saga: The Official Illustrated Guide, a definitive encyclopedic reference with nearly 100 full color illustrations, was released in bookstores in 2011.[2] In 2015, Meyer published a new novel in honor of the 10th anniversary of the book series, Life and Death: Twilight Reimagined, with the genders of the original protagonists switched.[3] Midnight Sun, a retelling of the first book, Twilight, from Edward Cullen's point of view, was published in 2020."
+    },
+    {   
+        "id": "3",
+        "title": "The Vampire Diaries ",
+        "coverUrl": "https://m.media-amazon.com/images/I/91F4amRqOEL._AC_UF1000,1000_QL80_.jpg",
+        "genre": "Horror; Fantasy; Romance; Young adult fiction",
+        "description": "The series was originally published in 1991–1992 and it revolves around Stefan Salvatore and Elena Gilbert as the two main protagonists. The first three novels in the original series (The Awakening, The Struggle, and The Fury) all feature Stefan and Elena as the narrators of the series, while the last book in the original series, Dark Reunion, is from Bonnie McCullough's viewpoint."
+    },
+    {   
+        "id": "4",
+        "title": "Dune",
+        "coverUrl": "https://m.media-amazon.com/images/I/913padSawdL._AC_UF1000,1000_QL80_.jpg",
+        "genre": "Novel, Science fiction, Fantasy Fiction, Adventure fiction, Conspiracy fiction, Military science fiction, Planetary romance",
+        "description": "Dune is a 1965 epic science fiction novel by American author Frank Herbert, originally published as two separate serials (1963–64 novel Dune World and 1965 novel Prophet of Dune) in Analog magazine. It tied with Roger Zelazny's This Immortal for the Hugo Award for Best Novel and won the inaugural Nebula Award for Best Novel in 1966. It is the first installment of the Dune Chronicles. It is one of the world's best-selling science fiction novels.[3]"
+    },
+    {   
+        "id": "5",
+        "title": "Ugly Love",
+        "coverUrl": "https://m.media-amazon.com/images/I/71E8VNPC1dL._AC_UF1000,1000_QL80_.jpg",
+        "genre": "Novel, Romance novel, Drama, Contemporary romance, New adult fiction, Erotic literature",
+        "description": "When Tate Collins meets airline pilot Miles Archer, she doesn’t think it’s love at first sight. They wouldn’t even go so far as to consider themselves friends. The only thing Tate and Miles have in common is an undeniable mutual attraction. Once their desires are out in the open, they realise they have the perfect set-up. He doesn’t want love, she doesn’t have time for love, so that just leaves the sex. Their arrangement could be surprisingly seamless, as long as Tate can stick to the only two rules Miles has for her.\n\nNever ask about the past.\nDon’t expect a future.\n\nThey think they can handle it, but realise almost immediately they can’t handle it at all.\n\nHearts get infiltrated.\nPromises get broken.\nRules get shattered.\nLove gets ugly."
+    },
+    {   
+        "id": "6",
+        "title": "Summer I Turned Pretty ",
+        "coverUrl": "https://rukminim2.flixcart.com/image/850/1000/xif0q/book/r/f/y/the-summer-i-turned-pretty-original-imagjy7j66zy2nrg.jpeg?q=90&crop=false",
+        "genre": "Romance, Comedy, Coming-of-age story, Drama",
+        "description": "The Summer I Turned Pretty is a trilogy of young adult romance novels written by American author Jenny Han, and published by Simon & Schuster. The series includes The Summer I Turned Pretty (2009), It's Not Summer Without You (2010), and We'll Always Have Summer (2011).[1]"
+    }
+]
