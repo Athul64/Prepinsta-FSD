@@ -1,0 +1,25 @@
+[
+  { "name": "Paris.",
+    "img": "/image/paris.jpg",
+    "description": "The City of Light",
+    "details": "Paris (French pronunciation: [paʁi] ⓘ) is the capital and largest city of France. With an official estimated population of 2,102,650 residents in January 2023[2] in an area of more than 105 km2 (41 sq mi),[5] Paris is the fourth-largest city in the European Union and the 30th most densely populated city in the world in 2022.[6] Since the 17th century, Paris has been one of the world's major centres of finance, diplomacy, commerce, culture, fashion, and gastronomy. For its leading role in the arts and sciences, as well as its early and extensive system of street lighting, in the 19th century, it became known as the City of Light.[7]."
+  },
+  { "name": "Bali.",
+    "img": "/image/bali.jpg",
+    "description": "Island Paradise",
+    "details": "Bali (English:/ˈbɑːli/; Balinese: ᬩᬮᬶ) is a province of Indonesia and the westernmost of the Lesser Sunda Islands. East of Java and west of Lombok, the province includes the island of Bali and a few smaller offshore islands, notably Nusa Penida, Nusa Lembongan, and Nusa Ceningan to the southeast. The provincial capital, Denpasar,[10] is the most populous city in the Lesser Sunda Islands and the second-largest, after Makassar, in Eastern Indonesia. Denpasar metropolitan area is the extended metropolitan area around Denpasar. The upland town of Ubud in Greater Denpasar is considered Bali's cultural centre. The province is Indonesia's main tourist destination, with a significant rise in tourism since the 1980s, and becoming an Indonesian area of overtourism.[11] Tourism-related business makes up 80% of the Bali economy.[12]."
+  },
+  { 
+    "name": "Tokyo.",
+    "img": "/image/tokyo.jpg",
+    "description": "Metropolis of the Future",
+    "details": "Tokyo (/ˈtoʊkioʊ/;[8] Japanese: 東京, Tōkyō, [toːkʲoː] ⓘ), officially the Tokyo Metropolis (東京都, Tōkyō-to), is the capital of Japan and one of the most populous cities in the world, with a population of over 14 million residents as of 2023 and the second-most-populated capital in the world.[9] The Greater Tokyo Area, which includes Tokyo and parts of six neighboring prefectures, is the most-populous metropolitan area in the world, with 41 million residents as of 2024.."
+  },
+  { 
+    "name": "KolKata.",
+    "img": "/image/kolkata.jpg",
+    "description": "The City of Joy",
+    "details": "Kolkata,[a] also known as Calcutta[b] (its official name until 2001), is the capital and largest city of the Indian state of West Bengal. It lies on the eastern bank of the Hooghly River, 80 km (50 mi) west of the border with Bangladesh. It is the primary financial and commercial centre of eastern and northeastern India.[16] Kolkata is the seventh most populous city in India with an estimated city proper population of 4.5 million (0.45 crore) while its metropolitan region Kolkata Metropolitan Area is third most populous metropolitan region of India with metro population of over 15 million (1.5 crore).[17] Kolkata is regarded by many sources as the cultural capital of India and a historically and culturally significant city in the historic region of Bengal.[1][18][19] It is the second largest Bengali-speaking city in the world. It has the highest number of Nobel laureates among all cities in India.."
+  }
+]
+  

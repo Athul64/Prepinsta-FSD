@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+*{
+  font-family: "SUSE", sans-serif;
+}
+
+#contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; /* Center content vertically */
+  padding: 110px; /* Add some padding */
+  background-color: #f9f9f9; /* Light background for better contrast */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure the form uses full width within the container */
+  max-width: 600px; /* Maximum width for the form */
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+input, textarea {
+  margin-bottom: 15px; /* Increase spacing between fields */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Rounded corners for a softer look */
+  font-size: 16px; /* Larger text for readability */
+}
+
+textarea {
+  resize: vertical; /* Allow users to resize textarea vertically */
+  min-height: 150px; /* Ensure textarea has a minimum height */
+}
+
+button {
+  padding: 10px 20px; /* Increase padding for a better button size */
+  background-color: #10221b;
+  color: white;
+  border: none;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+  border-radius: 5px;
+  border-radius: 4px; /* Rounded corners for consistency */
+  cursor: pointer;
+  font-size: 16px; /* Larger text for readability */
+}
+
+button:hover {
+  background-color: #fff;
+  color: #10221b; /* Slightly lighter on hover */
+}

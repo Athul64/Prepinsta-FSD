@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+
+/* Ensure no margin or padding in the body and html */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  width: 100vw;  /* Full viewport width */
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 0, 0.1)), 
+              url('./bg.jpeg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 50px;
+  color: white;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: "SUSE", sans-serif;
+}
+
+.hero h1 span {
+  color: #10221b; /* Green highlight for 'PARADISE' */
+}
+
+.hero-button {
+  background-color: transparent;
+  color: #10221b;
+  border: 2px solid #10221b;
+  padding: 15px 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hero-button:hover {
+  background-color: #10221b;
+  color: white;
+}
